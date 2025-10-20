@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-youtube-red: #ff0000;
+  --color-youtube-dark: #0f0f0f;
+  --color-youtube-gray: #272727;
+  --color-youtube-lightGray: #3f3f3f;
+}
+
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: var(--color-youtube-dark);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

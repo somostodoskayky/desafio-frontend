@@ -1,60 +1,174 @@
-# 🏁 Desafio de programação - Vaga Front-End 🏁
+# YouTube Video Platform
 
-**Este teste tem por objetivos principais avaliar:**
+A modern, responsive video platform interface built with React, TypeScript, Redux Toolkit, and Tailwind CSS. This application fetches data directly from the YouTube Data API v3 and manages all state on the client side.
 
-- Habilidades no desenvolvimento frontend
-- Conceitos de UI e UX aplicados
+## 🚀 Features
 
-****
+- **Popular Videos**: Browse trending and popular videos on the home page
+- **Video Search**: Search for videos with debounced input and search history
+- **Video Player**: Watch videos with embedded YouTube player
+- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **State Management**: Centralized state management with Redux Toolkit
+- **Type Safety**: Full TypeScript support for better development experience
 
-## Instruções
+## 🛠️ Tech Stack
 
-- Primeiro, faça um fork deste projeto para sua conta no Github (crie uma se você não possuir).
-- Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local.
-- Por fim, envie via email um arquivo patch para seu contato na Bycoders_.
+- **Frontend**: React 18 with TypeScript
+- **State Management**: Redux Toolkit (RTK)
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
+- **HTTP Client**: Axios
+- **Build Tool**: Vite
+- **API**: YouTube Data API v3
 
-****
+## 📁 Project Structure
 
-## Desafio 🚀 🚀 🚀
+```
+src/
+├── api/                 # API service layer
+│   └── youtube.ts      # YouTube API functions
+├── components/         # Reusable UI components
+│   ├── layout/        # Header, Sidebar
+│   ├── ui/           # Button, Card, LoadingSpinner
+│   └── video/        # VideoCard, VideoGrid
+├── hooks/            # Custom React hooks
+│   ├── useDebounce.ts
+│   └── useLocalStorage.ts
+├── pages/            # Page components
+│   ├── HomePage.tsx
+│   ├── SearchPage.tsx
+│   └── WatchPage.tsx
+├── redux/            # Redux store and slices
+│   ├── store.ts
+│   └── slices/      # videoSlice, searchSlice, authSlice
+├── types/            # TypeScript type definitions
+│   └── youtube.d.ts
+└── styles/           # Global styles
+    └── index.css
+```
 
-![screen](/image.png)
+## 🚀 Getting Started
 
-O desafio consiste em criar um projeto com o design da imagem **acima**, utilizando a [API do YouTube](https://developers.google.com/youtube/v3)
+### Prerequisites
 
-Utilize a [documentação](https://developers.google.com/youtube/v3/docs) para se orientar em como criar uma conta, logar no app, listar os vídeos do usuário, se inscrever em canais, enviar vídeos, ou o que mais você precisar.
+- Node.js (v16 or higher)
+- npm or yarn
+- YouTube Data API v3 key
 
-O layout da **home** não precisa ser exatamente como o do wireframe. Você pode ficar a vontade para exibir os conteúdos/vídeos que achar melhor, desde que qualquer informação (vídeo, texto, cores, imagens) sejam exibidos de maneira organizada e bem distribuida entre a tela, fornecendo uma boa experiência para o usuário.
+### Installation
 
-**Antes de iniciar o teste**
-1. Crie um projeto no [console de desenvolvedor](https://console.developers.google.com/projectcreate) da **Google**
-2. Ative a [YouTube Data API v3](https://console.developers.google.com/apis/api/youtube.googleapis.com/overview) nele
-3. Crie uma credencial de acesso para que seu app possa se comunicar com a API
+1. Clone the repository:
 
-**Requisitos esperados na entrega do teste**
+```bash
+git clone <repository-url>
+cd youtube-video-platform
+```
 
-- [ ] Fornecer um mecanismo para o usuário poder pesquisar vídeos
-- [ ] Possuir home page que exiba algum conteúdo interessante para uma plataforma de vídeos
-- [ ] Fornecer uma estrutura de gerência do estado da aplicação
-- [ ] Possuir histórico das buscas realizadas (persistir localmente)
+2. Install dependencies:
 
-**Requisitos extras** 
+```bash
+npm install
+```
 
-- [ ] Permitir cadastro de usuário / login através da API do YouTube + OAuth2
-- [ ] Permitir upload de vídeo para a API do YouTube
+3. Set up your API keys:
 
-****
+   - Get a YouTube Data API v3 key from [Google Cloud Console](https://console.cloud.google.com/)
+   - Get a Google OAuth Client ID from [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a `.env` file in the root directory
+   - Add your API keys:
 
-## Pontos principais
+   ```
+   VITE_YOUTUBE_API_KEY=your_youtube_api_key_here
+   VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
+   ```
 
-- Clean code
-- Conhecimento de boas práticas / design patterns
-- Demonstração de boa gestão do estado do app
+4. Configure Google OAuth:
 
-****
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Navigate to "APIs & Services" → "Credentials"
+   - Create OAuth 2.0 Client ID (Web application)
+   - Add authorized redirect URIs:
+     - `http://localhost:5173/auth/callback` (for development)
+     - `https://yourdomain.com/auth/callback` (for production)
+   - Enable the following APIs:
+     - YouTube Data API v3
+     - Google+ API (for user profile)
 
-## Pontos extras
-- Uso de frameworks / libs
-- Testes
-- Componetização do app
-- Uso de linters
-****
+5. Start the development server:
+
+```bash
+npm run dev
+```
+
+5. Open your browser and navigate to `http://localhost:5173`
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## 📱 Features Overview
+
+### Home Page
+
+- Displays popular videos fetched from YouTube API
+- Responsive grid layout
+- Loading states and error handling
+
+### Search Functionality
+
+- Real-time search with debouncing
+- Search history with localStorage persistence
+- Search results page with video grid
+
+### Video Player
+
+- Embedded YouTube player
+- Video details and metadata
+- Related videos section (placeholder)
+
+### Responsive Design
+
+- Mobile-first approach
+- YouTube-inspired dark theme
+- Smooth transitions and hover effects
+
+## 🎨 Styling
+
+The application uses Tailwind CSS with a custom YouTube-inspired color palette:
+
+- `youtube-red`: #FF0000
+- `youtube-dark`: #0F0F0F
+- `youtube-gray`: #272727
+- `youtube-lightGray`: #3F3F3F
+
+## 🔒 API Configuration
+
+The application requires a YouTube Data API v3 key. Make sure to:
+
+1. Enable the YouTube Data API v3 in Google Cloud Console
+2. Create credentials (API key)
+3. Set appropriate restrictions for security
+4. Add the key to your `.env` file
+
+## 🚀 Deployment
+
+To deploy the application:
+
+1. Build the project:
+
+```bash
+npm run build
+```
+
+2. Deploy the `dist` folder to your preferred hosting service (Vercel, Netlify, etc.)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
